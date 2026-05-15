@@ -8,11 +8,11 @@ llm = ChatOpenAI(base_url="http://localhost:1234/v1", api_key="not-needed", max_
 
 # First chain generates a story
 story_prompt = ChatPromptTemplate.from_template("Write a short story about {topic}")
-story_chain = (story_prompt | llm | StrOutputParser()).with_config(tags=["story"])
+story_chain = (story_prompt | llm | StrOutputParser())
 
 # Second chain analyzes the story
 analysis_prompt = ChatPromptTemplate.from_template("Analyze the following story's mood:\n{story}")
-analysis_chain = (analysis_prompt | llm | StrOutputParser()).with_config(tags=["analysis"])
+analysis_chain = (analysis_prompt | llm | StrOutputParser())
 
 # Using RunnablePassthrough.assign to preserve data
 enhanced_chain = RunnablePassthrough.assign(
