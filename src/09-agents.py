@@ -90,11 +90,11 @@ print(response["messages"][-1].content)
 [msg.pretty_print() for msg in response["messages"]]
 
 # Query that requires multiple tools
-query = "What is the laptop price in the database? After getting the price, calculate 15% of the price."
+# query = "What is the laptop price in the database? After getting the price, calculate 15% of the price."
 
-response = agent.invoke({"messages": [HumanMessage(content=query)]})
+# response = agent.invoke({"messages": [HumanMessage(content=query)]})
 
-print(f"Query: {query}")
-print(f"\nAgent response:")
-print(response["messages"][-1].content)
-[msg.pretty_print() for msg in response["messages"]]
+# print(f"Query: {query}")
+# print(f"\nAgent response:")
+# print(response["messages"][-1].content)
+# [msg.pretty_print() for msg in response["messages"]]

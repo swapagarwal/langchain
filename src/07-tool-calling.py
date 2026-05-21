@@ -65,10 +65,10 @@ tools = [calculator, get_weather]
 # This doesn't execute anything yet - just tells the model tools exist
 llm_with_tools = llm.bind_tools(tools)
 
-# print(f"✓ Bound {len(tools)} tools to model")
-# print(f"Tools available: {[t.name for t in tools]}")
+print(f"✓ Bound {len(tools)} tools to model")
+print(f"Tools available: {[t.name for t in tools]}")
 
-# # Question that doesn't need tools
+# Question that doesn't need tools
 # response = llm_with_tools.invoke([
 #     HumanMessage(content="What is the capital of France?")
 # ])

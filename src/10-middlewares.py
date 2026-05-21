@@ -97,50 +97,50 @@ for message in result['messages']:
     message.pretty_print()
 print("\n")
 
-from langchain.agents.middleware import PIIMiddleware
+# from langchain.agents.middleware import PIIMiddleware
 
-# Redact emails in both inputs and outputs
-pii_email = PIIMiddleware(
-    "email",
-    strategy="redact",
-    apply_to_input=True,
-    apply_to_output=True,
-)
+# # Redact emails in both inputs and outputs
+# pii_email = PIIMiddleware(
+#     "email",
+#     strategy="redact",
+#     apply_to_input=True,
+#     apply_to_output=True,
+# )
 
-# Redact SSNs - critical for compliance
-pii_ssn = PIIMiddleware(
-    "credit_card",
-    strategy="redact",
-    apply_to_output=True,  # Mainly concerned about leaking in outputs
-)
+# # Redact SSNs - critical for compliance
+# pii_ssn = PIIMiddleware(
+#     "credit_card",
+#     strategy="redact",
+#     apply_to_output=True,  # Mainly concerned about leaking in outputs
+# )
 
-# Redact phone numbers
-pii_phone = PIIMiddleware(
-    "url",
-    strategy="redact",
-    apply_to_output=True,
-)
+# # Redact phone numbers
+# pii_phone = PIIMiddleware(
+#     "url",
+#     strategy="redact",
+#     apply_to_output=True,
+# )
 
-# Create agent with multiple PII middleware (they stack)
-agent_with_pii = create_agent(
-    llm,
-    tools=[get_user_data, search_web],
-    middleware=[pii_email, pii_ssn, pii_phone],
-)
+# # Create agent with multiple PII middleware (they stack)
+# agent_with_pii = create_agent(
+#     llm,
+#     tools=[get_user_data, search_web],
+#     middleware=[pii_email, pii_ssn, pii_phone],
+# )
 
-print("PII-protected agent configured")
-print("  - Emails: redacted in input and output")
-print("  - url: redacted in output")
-print("  - credit_card: redacted in output")
+# print("PII-protected agent configured")
+# print("  - Emails: redacted in input and output")
+# print("  - url: redacted in output")
+# print("  - credit_card: redacted in output")
 
-# Test PII redaction - the tool returns sensitive data, middleware redacts it
-result = agent_with_pii.invoke({
-    "messages": [{"role": "user", "content": "Get user data for user ID 12345"}]
-})
+# # Test PII redaction - the tool returns sensitive data, middleware redacts it
+# result = agent_with_pii.invoke({
+#     "messages": [{"role": "user", "content": "Get user data for user ID 12345"}]
+# })
 
-print("Agent response (PII should be redacted):")
-for message in result['messages']:
-    message.pretty_print()
+# print("Agent response (PII should be redacted):")
+# for message in result['messages']:
+#     message.pretty_print()
 
 
 # Note: The get_user_data tool returns:

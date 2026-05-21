@@ -1,4 +1,6 @@
+from curses import def_shell_mode
 from typing import Annotated, Optional, Union
+from pydantic_core.core_schema import date_schema
 from typing_extensions import TypedDict
 
 def my_reducer(left: list[str], right: Optional[Union[str, list[str]]]) -> list[str]:
@@ -35,6 +37,6 @@ graph = builder.compile()
 
 res = graph.invoke(
     {"job_description":"fake_jd"},
-    config={"configurable": {"model_provider": "OpenAI", "model_name": "gpt-4o"}}
+    # config={"configurable": {"model_provider": "OpenAI", "model_name": "gpt-4o"}}
 )
 print(res)
