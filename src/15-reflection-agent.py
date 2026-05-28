@@ -212,7 +212,10 @@ else:
     console.print("[bold red]Error: Cannot perform evaluation because the `final_state` is incomplete.[/bold red]")
 
 """
-Generate: The agent takes the user prompt and produces an initial draft or solution. This is its first, unfiltered attempt.
-Critique: The agent then switches roles and becomes its own critic. It analyzes the draft for flaws, asking questions like “Is this correct?”, “Is this efficient?”, or “What am I missing?”.
-Refine: Finally with its own critique, the agent generates a final, improved version of the output, directly addressing the flaws it found.
+1. Generate
+The agent takes the user prompt and produces an initial draft or solution. This is its first, unfiltered attempt.
+2. Critique
+The agent then switches roles and becomes its own critic. It analyzes the draft for flaws, asking questions like “Is this correct?”, “Is this efficient?”, or “What am I missing?”.
+3. Refine
+Finally with its own critique, the agent generates a final, improved version of the output, directly addressing the flaws it found.
 """
